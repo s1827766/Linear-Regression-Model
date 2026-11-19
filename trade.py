@@ -4,7 +4,6 @@ import os
 import sqlite3
 import pandas as pd
 
-from dotenv import load_dotenv
 from sklearn.linear_model import LinearRegression
 
 from alpaca.trading.client import TradingClient
