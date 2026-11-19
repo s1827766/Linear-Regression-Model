@@ -1,0 +1,37 @@
+name: Alpaca Trader
+
+on:
+  schedule:
+    - cron: "0 21 * * 1-5"   # weekdays at 21:00 UTC
+  workflow_dispatch:
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install pandas
+          pip install scikit-learn
+          pip install matplotlib
+          pip install alpaca-py
+
+      - name: Build regression dataset
+        run: |
+          python linear_regression.py
+
+      - name: Train model and trade
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        run: |
+          python trade.py
