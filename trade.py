@@ -12,8 +12,6 @@ from alpaca.trading.enums import OrderSide, TimeInForce
 
 # Load API keys
 
-load_dotenv()
-
 API_KEY = os.getenv("API_KEY")
 SECRET_KEY = os.getenv("SECRET_KEY")
 
