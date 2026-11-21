@@ -86,8 +86,8 @@ positions = {p.symbol: p for p in client.get_all_positions()}
 
 # Trading thresholds
 
-BUY_THRESHOLD = 0.0005
-SELL_THRESHOLD = -0.0005
+BUY_THRESHOLD = 0.00025
+SELL_THRESHOLD = -0.00025
 
 
 # Process signals
